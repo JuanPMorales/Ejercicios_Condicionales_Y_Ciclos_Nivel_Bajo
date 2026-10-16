@@ -33,7 +33,7 @@ inquirer
         console.log(`La temperatura es de ${temperatura}°C, ${consejos}`);
     })
 
-    */
+    
 
 // Ejercicio 2: Cobro del parqueadero
 
@@ -72,21 +72,89 @@ El Total a pagar es de ${horaTotal}, estuviste un total de: ${horasParqueadas} h
         }
     })
 
-/*
 
-// Ejercicio 1: CLasificador de temperatura
-let temperatura = 18
-let consejos = "" 
+// Ejercicio 3: Cuenta Regresiva de lanzamiento
 
-if (temperatura < 10){
-    consejos = "Hace frío, lleva chaqueta"
-} else if(temperatura < 24 ){
-    consejos = "Clima templado"
-} else if (temperatura > 25){
-    consejos = "Hace calor, hidrátate"
-} else {
-    consejos = "El valor ingresado no es un numero"
+const cuenta = [
+    {
+        type: 'number',
+        name: 'numeroComiezo',
+        message: 'Ingresa el numero desde el que quieres comenzar la cuenta: ',
+    }
+
+]
+
+inquirer 
+    .prompt(cuenta)
+    .then((regresiva) => {
+        const cuentaRegresiva = regresiva.numeroComiezo
+
+        if (cuentaRegresiva <= 0){
+            console.log(`Número no válido`)
+        } else {
+            for (let i = cuentaRegresiva; i > 0; i--){
+            console.log(i)
+            }
+            console.log("¡Despegue!")
+        }        
+    })
+
+
+
+
+// Ejercicio 4: RiwiCoder
+
+const FizzBuzz = [
+    {
+        type: 'number',
+        name: 'numero',
+        message: 'Ingresa el numero: ',
+    }
+] 
+
+inquirer
+ .prompt(FizzBuzz)
+ .then((numeroRiwiCoder) =>{
+    const numeroIngresado = numeroRiwiCoder.numero
+        for (let i = 1; i <= numeroIngresado; i++){
+            if (i % 3 ===0 && i % 5 === 0){
+                console.log("RiwiCoder")
+            } else if (i % 3 === 0 ){
+                console.log("Riwi")
+            } else if (i % 5 === 0){
+                console.log("Coder")
+            } else {
+                console.log(i)
+            }
+        }
+    })
+
+ */
+
+// Ejercicio 5: Adivina el numero
+
+
+console.log(" ========== Adivina el número que la maquina piensa del 1 al 20 ====================")
+
+
+
+let numeroAleatorio = 12
+// for (let ramdom = 1; ramdom <= 1; ramdom++){
+//     numeroAleatorio = Math.floor(Math.random() * 20)
+// }
+let maximoIntentos = 5
+for(let intentos = 1; intentos <= maximoIntentos; intentos++){  
+
+    const pregunta = await inquirer.prompt([
+        {
+            type: 'input',
+            name: 'numeroIngresado',
+            message: 'Ingresa el número del 1 al 20: '
+        }
+    ])
+
+    const {numeroIngresado} = pregunta 
+
+    
+
 }
-
-console.log(consejos)
-*/

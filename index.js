@@ -134,27 +134,39 @@ inquirer
 // Ejercicio 5: Adivina el numero
 
 
-console.log(" ========== Adivina el número que la maquina piensa del 1 al 20 ====================")
+// let numeroSecreto = 11
+let numeroSecreto = Math.floor(Math.random() * 21)
+let intentos = 5
 
+console.log("¡Bienvenido al juego de adivinar el número secreto!")
+console.log("Tienes 5 intentos para adivinar el número secreto (entre 1 y 20).")
 
-
-let numeroAleatorio = 12
-// for (let ramdom = 1; ramdom <= 1; ramdom++){
-//     numeroAleatorio = Math.floor(Math.random() * 20)
-// }
-let maximoIntentos = 5
-for(let intentos = 1; intentos <= maximoIntentos; intentos++){  
-
-    const pregunta = await inquirer.prompt([
+while (intentos > 0){
+    const respuesta = await inquirer.prompt([
         {
-            type: 'input',
-            name: 'numeroIngresado',
-            message: 'Ingresa el número del 1 al 20: '
+            type: "number",
+            name:"numeroUsuario",
+            message: "Adivina el numero secreto (entre 1 y 20): "
         }
     ])
 
-    const {numeroIngresado} = pregunta 
+    intentos--
+    console.log(`Intentos restantes: ${intentos}`)
 
+    let numeroUsuario = respuesta.numeroUsuario
+
+    if (numeroUsuario === numeroSecreto) {
+        console.log(`¡Ganaste en el intento ${5 - intentos}!`)
+        break
+    }
     
+    if (numeroUsuario < numeroSecreto) {
+        console.log(`El numero secreto es mayor.`)
+    } else{
+        console.log(`El numero secreto es menor.`)
+    }
+}
 
+if (intentos === 0) {
+    console.log(`Perdiste, el numero era ${numeroSecreto}.`)
 }
